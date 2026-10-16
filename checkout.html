@@ -1,0 +1,668 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Checkout | Coffee_eboo</title><style>
+
+    :root {
+
+      --cream: #fffaf4;
+
+      --brown: #352015;
+
+      --caramel: #a65d35;
+
+    }
+
+    * {
+
+      box-sizing: border-box;
+
+    }
+
+    html {
+
+      scroll-behavior: smooth;
+
+    }
+
+    body {
+
+      margin: 0;
+
+      color: var(--brown);
+
+      font-family: Arial, sans-serif;
+
+    }
+
+    a {
+
+      text-decoration: none;
+
+    }
+
+    img {
+
+      display: block;
+
+      max-width: 100%;
+
+    }
+
+    /* Navbar — same as Home page */
+
+    .coffee-nav {
+
+      position: relative;
+
+      z-index: 10;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      min-height: 78px;
+
+      padding: 14px 6%;
+
+      background: var(--cream);
+
+      box-shadow: 0 2px 16px rgba(59, 36, 21, .08);
+
+    }
+
+    .coffee-logo {
+
+      color: var(--brown);
+
+      font-size: 29px;
+
+      font-weight: 800;
+
+      letter-spacing: -1.5px;
+
+      white-space: nowrap;
+
+    }
+
+    .coffee-logo span {
+
+      color: var(--caramel);
+
+    }
+
+    .nav-links {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 32px;
+
+    }
+
+    .nav-links a {
+
+      color: #473429;
+
+      font-size: 15px;
+
+      font-weight: 600;
+
+    }
+
+    .nav-links a:hover {
+
+      color: var(--caramel);
+
+    }
+
+    .nav-links .shop-button {
+
+      padding: 12px 22px;
+
+      border-radius: 30px;
+
+      background: #603c2b;
+
+      color: #fff;
+
+    }
+
+    .nav-links .shop-button:hover {
+
+      background: var(--caramel);
+
+      color: #fff;
+
+    }
+
+    .menu-toggle {
+
+      display: none;
+
+      padding: 8px;
+
+      border: 0;
+
+      background: transparent;
+
+      cursor: pointer;
+
+    }
+
+    .menu-toggle span {
+
+      display: block;
+
+      width: 25px;
+
+      height: 2px;
+
+      margin: 5px 0;
+
+      background: var(--brown);
+
+    }
+
+    /* Page heading */
+
+    .page-intro {
+
+      padding: 75px 6% 60px;
+
+      background: #f8eddf;
+
+      text-align: center;
+
+    }
+
+    .page-intro span {
+
+      color: var(--caramel);
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      letter-spacing: 3px;
+
+    }
+
+    .page-intro h1 {
+
+      margin: 15px 0;
+
+      font-size: clamp(40px, 5vw, 66px);
+
+    }
+
+    .page-intro p {
+
+      margin: 0;
+
+      color: #715747;
+
+      font-size: 17px;
+
+    }
+
+    /* Products */
+
+    .products-section {
+
+      max-width: 1450px;
+
+      margin: auto;
+
+      padding: 70px 5% 90px;
+
+    }
+
+    .products-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+
+      gap: 22px;
+
+    }
+
+    .product {
+
+      min-width: 0;
+
+    }
+
+    .product-image {
+
+      overflow: hidden;
+
+      border-radius: 32px;
+
+      background: #d5a77f;
+
+    }
+
+    .product-image img {
+
+      width: 100%;
+
+      aspect-ratio: 4 / 5;
+
+      object-fit: cover;
+
+      transition: transform .3s ease;
+
+    }
+
+    .product:hover .product-image img {
+
+      transform: scale(1.04);
+
+    }
+
+    .product h2 {
+
+      margin: 18px 0 8px;
+
+      color: #80502f;
+
+      font-size: 21px;
+
+      font-weight: 500;
+
+      line-height: 1.4;
+
+    }
+
+    .product p {
+
+      margin: 0;
+
+      color: #756052;
+
+      font-size: 15px;
+
+      line-height: 1.6;
+
+    }
+
+    /* Footer — same style as Home page */
+
+    .eboo-footer {
+
+      background: var(--brown);
+
+      color: #f9eee2;
+
+    }
+
+    .footer-inner {
+
+      display: grid;
+
+      grid-template-columns: 1.2fr .7fr 1fr;
+
+      gap: 55px;
+
+      max-width: 1300px;
+
+      margin: auto;
+
+      padding: 65px 5%;
+
+    }
+
+    .footer-logo {
+
+      color: #fff7ee;
+
+      font-size: 36px;
+
+      font-weight: 800;
+
+      letter-spacing: -2px;
+
+    }
+
+    .footer-logo span {
+
+      color: #d7905a;
+
+    }
+
+    .eboo-footer h3 {
+
+      margin: 5px 0 20px;
+
+      color: #fff7ee;
+
+      font-size: 18px;
+
+    }
+
+    .eboo-footer p {
+
+      max-width: 340px;
+
+      color: #ddc8b8;
+
+      font-size: 15px;
+
+      line-height: 1.7;
+
+    }
+
+    .footer-links a {
+
+      display: block;
+
+      width: fit-content;
+
+      margin-bottom: 14px;
+
+      color: #ddc8b8;
+
+    }
+
+    .footer-links a:hover {
+
+      color: #fff;
+
+    }
+
+    .footer-cta {
+
+      display: inline-block;
+
+      margin-top: 12px;
+
+      padding: 13px 22px;
+
+      border-radius: 30px;
+
+      background: #d7905a;
+
+      color: #2f1a10;
+
+      font-weight: 700;
+
+    }
+
+    .footer-cta:hover {
+
+      background: #edaa78;
+
+    }
+
+    .footer-bottom {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      max-width: 1300px;
+
+      margin: auto;
+
+      padding: 22px 5%;
+
+      border-top: 1px solid #79533e;
+
+      color: #cdb3a1;
+
+      font-size: 13px;
+
+    }
+
+    .footer-bottom a {
+
+      color: #cdb3a1;
+
+    }
+
+    @media (max-width: 950px) {
+
+      .products-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      }
+
+      .footer-inner {
+
+        grid-template-columns: 1fr 1fr;
+
+      }
+
+    }
+
+    @media (max-width: 768px) {
+
+      .menu-toggle {
+
+        display: block;
+
+      }
+
+      .nav-links {
+
+        display: none;
+
+        position: absolute;
+
+        top: 100%;
+
+        left: 0;
+
+        right: 0;
+
+        padding: 22px 6%;
+
+        background: var(--cream);
+
+        box-shadow: 0 12px 18px rgba(59, 36, 21, .12);
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 22px;
+
+      }
+
+      .nav-links.open {
+
+        display: flex;
+
+      }
+
+      .nav-links .shop-button {
+
+        text-align: center;
+
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .page-intro {
+
+        padding: 55px 6%;
+
+      }
+
+      .products-section {
+
+        padding: 45px 5% 65px;
+
+      }
+
+      .products-grid {
+
+        gap: 14px;
+
+      }
+
+      .product-image {
+
+        border-radius: 19px;
+
+      }
+
+      .product h2 {
+
+        font-size: 16px;
+
+      }
+
+      .product p {
+
+        font-size: 13px;
+
+      }
+
+      .footer-inner {
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        padding-top: 50px;
+
+        padding-bottom: 50px;
+
+      }
+
+      .footer-bottom {
+
+        flex-direction: column;
+
+      }
+
+    }
+
+
+
+button {font:inherit;cursor:pointer} button:focus-visible,a:focus-visible {outline:3px solid #a65d35;outline-offset:4px}
+
+.nav-actions{display:flex;align-items:center;gap:12px}.cart-button{display:flex;align-items:center;gap:8px;border:1px solid #d7c0ab;border-radius:24px;background:white;color:var(--brown);padding:10px 14px}.cart-count{background:var(--caramel);color:white;border-radius:50%;min-width:23px;padding:3px;font-size:12px}
+
+.product-price{font-weight:700;margin:16px 0 10px}.add-cart{width:100%;padding:13px 10px;background:var(--brown);color:white;border:0;border-radius:24px}.add-cart:hover{background:var(--caramel)}
+
+.cart-dialog{position:fixed;inset:0 0 0 auto;margin:0;width:min(460px,100%);max-width:100%;height:100dvh;max-height:100dvh;padding:24px;border:0;background:var(--cream);color:var(--brown)}.cart-dialog::backdrop{background:rgba(35,20,12,.55)}.cart-layout{height:100%;display:flex;flex-direction:column}.cart-header{display:flex;align-items:center;justify-content:space-between;gap:12px}.cart-header h2{margin:0}.close-cart{border:0;background:transparent;font-size:28px;padding:8px}.cart-items{flex:1;overflow:auto;padding:20px 0}.cart-row{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid #dfcdbd}.cart-row img{width:70px;height:90px;object-fit:cover;border-radius:12px}.cart-detail{flex:1;min-width:0}.cart-detail h3{font-size:15px;margin:0 0 7px}.cart-detail p{font-size:14px;margin:5px 0}.quantity{display:inline-flex;align-items:center;border:1px solid #cfb8a4;border-radius:20px;margin-top:8px;overflow:hidden}.quantity button{border:0;background:transparent;width:34px;height:34px}.quantity span{min-width:26px;text-align:center}.remove-item{border:0;background:transparent;color:#884428;text-decoration:underline;font-size:12px;margin-left:8px}.cart-summary{border-top:1px solid #cfb8a4;padding-top:18px}.total-row{display:flex;justify-content:space-between;font-weight:bold;gap:16px}.cart-note{font-size:13px;color:#715747;line-height:1.6}.continue-shopping{width:100%;padding:14px;background:var(--brown);color:white;border:0;border-radius:24px}.cart-empty{text-align:center;padding:50px 10px;color:#715747}.cart-status{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--brown);color:white;border-radius:24px;padding:12px 20px;z-index:30;max-width:90%;text-align:center}.cart-status:empty{display:none}
+
+@media(max-width:600px){.coffee-logo{font-size:24px}.coffee-nav{padding:14px 4%}.cart-button{padding:9px}.cart-button .cart-label{display:none}.nav-actions{gap:4px}.remove-item{display:block;margin:8px 0 0}}
+
+
+
+
+
+.checkout-button{width:100%;padding:14px;border:0;border-radius:24px;background:var(--caramel);color:white;margin-bottom:10px}.checkout-form{padding:20px 0;overflow:auto;max-height:55dvh;flex-shrink:0}.checkout-form label{display:block;font-size:14px;margin:14px 0 6px}.checkout-form input,.checkout-form textarea{width:100%;padding:12px;border:1px solid #cfb8a4;border-radius:10px;font:inherit}.checkout-form[hidden]{display:none}.checkout-result{font-size:14px;line-height:1.5}.checkout-button:disabled{opacity:.6;cursor:wait}
+
+
+.products-banner{width:100%;background:#f8eddf;}
+.products-banner img{display:block;width:100%;height:auto;}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.buy-now{display:block;text-align:center;margin-top:10px;padding:13px 10px;border-radius:24px;background:var(--caramel);color:white;font-weight:700}.buy-now:hover{background:#824321}
+
+body{background:var(--cream)}.checkout-nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6%;background:white}.checkout-nav>a:last-child{color:var(--caramel)}.checkout-wrap{max-width:1120px;margin:auto;padding:45px 5% 70px}.checkout-wrap h1{font-size:40px;margin:0 0 10px}.checkout-lead{color:#715747;margin-bottom:32px}.checkout-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}.panel{background:white;border:1px solid #ead9c9;border-radius:22px;padding:28px}.panel h2{margin:0 0 22px;font-size:23px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field.full{grid-column:1/-1}.field label{display:block;margin-bottom:8px;font-size:14px;font-weight:600}.field input,.field textarea,.summary-item input{width:100%;padding:13px;border:1px solid #cfb8a4;border-radius:10px;font:inherit;background:#fff}.field textarea{min-height:90px;resize:vertical}input:focus,textarea:focus{outline:2px solid var(--caramel);outline-offset:2px}.payment{margin:24px 0;padding:18px;background:#fff8ed;border:1px solid #e4c39e;border-radius:12px}.payment p{margin:10px 0 0;font-size:14px;color:#715747;line-height:1.6}.submit-order{width:100%;padding:16px;border:0;border-radius:26px;background:var(--brown);color:white;font-weight:700}.submit-order:disabled{opacity:.6;cursor:wait}.summary-item{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid #ead9c9}.summary-item img{width:78px;height:95px;object-fit:cover;border-radius:12px}.summary-item h3{font-size:16px;margin:0 0 8px}.summary-item p{font-size:14px;margin:0 0 10px}.summary-item label{font-size:13px}.summary-item input{width:75px;padding:7px;margin-left:8px}.summary-line{display:flex;justify-content:space-between;gap:15px;margin-top:20px}.summary-line.total{font-size:20px;font-weight:bold;padding-top:18px;border-top:1px solid #ead9c9}.summary-note{font-size:13px;color:#715747;line-height:1.6}.result{line-height:1.7;overflow-wrap:anywhere}.result:empty{display:none}.result.error{color:#a32e20}.result.success{padding:20px;background:#edf7ec;color:#285324;border-radius:12px;margin-top:20px}.empty-state{padding:25px;background:white;border-radius:16px}.empty-state a{color:var(--caramel)}[hidden]{display:none!important}@media(max-width:760px){.checkout-grid{grid-template-columns:1fr}.summary-panel{grid-row:1}.fields{grid-template-columns:1fr}.panel{padding:20px}.checkout-nav{gap:20px}.checkout-wrap h1{font-size:32px}}
+</style></head><body><header class="checkout-nav"><a class="coffee-logo" href="coffeeboohome.html">coffee<span>_</span>eboo</a><a href="coffeebooprouduct.html">← Back to products</a></header><main class="checkout-wrap"><h1>Checkout</h1><p class="checkout-lead">Your next coffee moment is almost here.</p><div id="empty" class="empty-state" hidden>No product selected. <a href="coffeebooprouduct.html">Browse products →</a></div><div class="checkout-grid" id="checkout-grid"><section class="panel"><h2>Delivery details</h2><form id="order-form"><div class="fields">
+<div class="field full"><label for="name">Full name *</label><input id="name" name="name" autocomplete="name" required maxlength="100"></div>
+<div class="field"><label for="phone">Phone / WhatsApp *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required pattern="[+0-9() .\-]{7,30}" maxlength="30" title="Enter a valid phone number, including area or country code"></div>
+<div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
+<div class="field full"><label for="address">Complete delivery address *</label><textarea id="address" name="address" autocomplete="street-address" placeholder="House / flat number, street and area" required maxlength="1000"></textarea></div>
+<div class="field"><label for="city">City *</label><input id="city" name="city" autocomplete="address-level2" required maxlength="100"></div>
+<div class="field"><label for="province">Province / State *</label><input id="province" name="province" autocomplete="address-level1" required maxlength="100"></div>
+<div class="field"><label for="postal">Postal code (optional)</label><input id="postal" name="postal_code" autocomplete="postal-code" maxlength="20"></div>
+<div class="field"><label for="country">Country *</label><input id="country" name="country" value="Pakistan" autocomplete="country-name" required maxlength="100"></div>
+<div class="field full"><label for="notes">Order notes (optional)</label><textarea id="notes" name="notes" placeholder="Landmark or delivery instructions" maxlength="1000"></textarea></div></div><fieldset class="payment"><legend>Payment method</legend><label><input type="radio" name="payment" value="Cash on Delivery (COD)" checked required> <strong>Cash on Delivery (COD)</strong></label><p>Pay cash when your order arrives. The store will confirm availability and delivery charges before dispatch.</p></fieldset><input type="checkbox" name="botcheck" tabindex="-1" hidden><button class="submit-order" id="submit-order" type="submit">Place COD Order →</button></form><div id="result" class="result" role="status" aria-live="polite"></div></section><aside class="panel summary-panel"><h2>Your order</h2><div id="summary-items"></div><div class="summary-line"><span>Subtotal</span><strong id="subtotal"></strong></div><div class="summary-line"><span>Delivery</span><span>To be confirmed</span></div><div class="summary-line total"><span>Product total</span><span id="total"></span></div><p class="summary-note">Delivery charges, if any, will be confirmed by the store. No online payment is required.</p></aside></div></main><footer class="eboo-footer" id="contact">
+
+    <div class="footer-inner">
+
+      <div>
+
+        <a href="index.html#home" class="footer-logo">
+
+          coffee<span>_</span>eboo
+
+        </a>
+
+        <p>Coffee for every moment.</p>
+
+      </div>
+
+      <div class="footer-links">
+
+        <h3>Explore</h3>
+
+        <a href="index.html#home">Home</a>
+
+        <a href="coffeebooprouduct.html">Shop Coffee</a>
+
+        <a href="index.html#about">About Us</a>
+
+      </div>
+
+      <div>
+
+        <h3>Enjoy your coffee moment</h3>
+
+        <p>
+
+          Discover Coffee_eboo instant coffee, iced coffee and vanilla syrup.
+
+        </p>
+
+        <a href="coffeebooprouduct.html" class="footer-cta">Explore Products →</a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <span>© 2026 Coffee_eboo. All rights reserved.</span>
+
+      <a href="#">Back to top ↑</a>
+
+    </div>
+
+  </footer><script src="products.js"></script><script>
+const CART_KEY='coffee_eboo_cart_v1';
+const params=new URLSearchParams(location.search),cartMode=params.get('cart')==='1';
+let ordered={},sending=false,completed=false;
+if(cartMode){try{const saved=JSON.parse(localStorage.getItem(CART_KEY)||'{}');PRODUCTS.forEach(p=>{if(saved&&Number.isInteger(saved[p.id])&&saved[p.id]>0)ordered[p.id]=Math.min(99,saved[p.id]);});}catch{}}
+else{const product=PRODUCTS.find(p=>p.id===params.get('product'));if(product)ordered[product.id]=1;}
+const form=document.getElementById('order-form'),result=document.getElementById('result'),submit=document.getElementById('submit-order');
+function subtotal(){return PRODUCTS.reduce((sum,p)=>sum+p.price*(ordered[p.id]||0),0);}
+function render(){
+ const empty=!Object.keys(ordered).length;document.getElementById('empty').hidden=!empty;document.getElementById('checkout-grid').hidden=empty;
+ const holder=document.getElementById('summary-items');holder.replaceChildren();
+ PRODUCTS.filter(p=>ordered[p.id]).forEach(p=>{const row=document.createElement('div');row.className='summary-item';const img=document.createElement('img');img.src=p.image;img.alt=p.name;const detail=document.createElement('div'),title=document.createElement('h3'),price=document.createElement('p'),label=document.createElement('label'),qty=document.createElement('input');title.textContent=p.name;price.textContent=formatMoney(p.price)+' each';label.textContent='Quantity';qty.type='number';qty.min=1;qty.max=99;qty.step=1;qty.value=ordered[p.id];qty.required=true;qty.setAttribute('aria-label','Quantity of '+p.name);qty.addEventListener('input',()=>{qty.setCustomValidity('');if(!qty.checkValidity())return;ordered[p.id]=Number(qty.value);document.getElementById('subtotal').textContent=document.getElementById('total').textContent=formatMoney(subtotal());});label.append(qty);detail.append(title,price,label);row.append(img,detail);holder.append(row);});
+ document.getElementById('subtotal').textContent=document.getElementById('total').textContent=formatMoney(subtotal());
+}
+render();
+form.addEventListener('submit',async event=>{
+ event.preventDefault();if(sending||completed)return;
+ for(const input of form.querySelectorAll('input[required],textarea[required]')){input.value=input.value.trim();}
+ if(!form.reportValidity())return;
+ for(const qty of document.querySelectorAll('.summary-item input'))if(!qty.reportValidity())return;
+ if(!Object.keys(ordered).length)return;
+ const data=Object.fromEntries(new FormData(form));if(data.botcheck)return;delete data.botcheck;
+ const snapshot={...ordered};const reference='EB-'+Date.now().toString(36).toUpperCase();
+ Object.assign(data,{access_key:'8fdcf9ea-5a2f-4066-8d5c-754ac5f1b1fc',subject:'New Coffee_eboo COD Order '+reference,from_name:'Coffee_eboo Store',replyto:data.email,order_reference:reference,order_items:PRODUCTS.filter(p=>snapshot[p.id]).map(p=>p.name+' | Quantity: '+snapshot[p.id]+' | Unit: '+formatMoney(p.price)+' | Total: '+formatMoney(p.price*snapshot[p.id])).join('\n'),subtotal:formatMoney(subtotal()),payment:'Cash on Delivery (COD)',delivery_charges:'To be confirmed before dispatch'});
+ sending=true;submit.disabled=true;submit.textContent='Sending order…';document.querySelectorAll('.summary-item input').forEach(i=>i.disabled=true);result.className='result';result.textContent='Sending your COD order. Please wait…';
+ const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),20000);
+ try{const response=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data),signal:controller.signal});const body=await response.json();if(!response.ok||body.success!==true)throw new Error(body.message||body.body?.message||('Email service rejected the order (HTTP '+response.status+').'));
+ completed=true;form.hidden=true;result.className='result success';result.textContent='The email service accepted your COD order request! Reference: '+reference+'. The store will contact you to confirm availability and delivery charges. Pay cash when your order arrives.';
+ if(cartMode){try{const current=JSON.parse(localStorage.getItem(CART_KEY)||'{}');for(const [id,qty]of Object.entries(snapshot)){if(Number.isInteger(current[id])){current[id]=Math.max(0,current[id]-qty);if(!current[id])delete current[id];}}localStorage.setItem(CART_KEY,JSON.stringify(current));}catch{}}
+ result.scrollIntoView({block:'center',behavior:'smooth'});
+ }catch(error){result.className='result error';result.textContent='Could not confirm your order: '+(error.name==='AbortError'?'The request timed out.':error.message)+' Your details are still here. If the access key is invalid or inactive, the store must replace it with an active Web3Forms key. Check with the store before retrying if your connection failed.';}
+ finally{clearTimeout(timeout);sending=false;if(!completed){submit.disabled=false;submit.textContent='Place COD Order →';document.querySelectorAll('.summary-item input').forEach(i=>i.disabled=false);}}
+});
+</script></body></html>
