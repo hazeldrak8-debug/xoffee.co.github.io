@@ -1,0 +1,71 @@
+XOFFEE — GITHUB PAGES + REAL ANALYTICS / ORDERS
+
+Yeh files connected code hain. Abhi koi backend deploy nahi hua.
+Purana private ChatGPT dashboard apne aap is backend se connect nahi hoga.
+Is package ka website/admin.html use karein.
+
+1. WEBSITE (GitHub)
+website/ folder ki files apne GitHub Pages repo mein upload karein.
+Backend deploy hone tak online ordering configuration error dikhayegi;
+is liye pehle backend tayyar karein, phir updated website upload karein.
+Backup rakh kar upload karein. Purani renamed pages ki jagah naye links use honge.
+
+2. BACKEND (Cloudflare account + Node.js)
+Terminal mein backend/ folder kholein:
+  npx wrangler login
+  npx wrangler d1 create xoffee-store
+Returned database_id ko backend/wrangler.jsonc mein paste karein.
+ALLOWED_ORIGINS ko apne EXACT GitHub Pages origin se replace karein:
+  https://YOUR-USERNAME.github.io
+Repo path origin ka part NAHI hai. Custom domain ho to woh origin bhi comma
+se add karein. Trailing slash mat lagayen.
+  npx wrangler d1 migrations apply xoffee-store --remote
+  npx wrangler secret put ADMIN_TOKEN
+Prompt par kam az kam 24 characters ka unique private password enter karein.
+Password ko kabhi GitHub/source/config file mein na likhein.
+  npx wrangler secret put RATE_SALT
+Prompt par doosra random private value enter karein.
+Optional email notifications (existing Web3Forms setup):
+  npx wrangler secret put WEB3FORMS_KEY
+Prompt par apne active Web3Forms account ki access key enter karein.
+  npx wrangler deploy
+
+3. CONNECT
+Deploy ke baad milne wali https://...workers.dev URL ko website/xoffee-config.js
+mein XOFFEE_API ke andar likhein, phir website/ GitHub par upload karein.
+GitHub Pages URL par /admin.html kholein. Connect your store tab mein
+API URL aur ADMIN_TOKEN password enter karein. Data har 30 seconds reload hoga.
+Admin password tab band/refresh karne par dobara enter karna hoga.
+
+4. CHECK
+Ek real test order sirf tab place karein jab aap usay receive karne ko tayyar hon.
+Store mein visit, add-to-cart, checkout aur order save check karein.
+Order server database mein save hone ke baad hi success dikhata hai.
+Retry mein wahi order reference use hota hai jab details same hon.
+Shipping: Rs 200. Prices: 50g Rs 999, 100g Rs 1850, iced coffee Rs 400.
+Vanilla sold out. Prices backend/worker.mjs aur website products dono mein
+saath update karein. Server final prices calculate karta hai.
+Bank transfer Pending rahega; payment verify karne par admin order details
+se Paid set karein. COD delivery ke baad Delivered karein.
+
+DATA & LIMITS
+Visitors anonymous browser IDs hain, exact people nahi. Browser storage clear
+karne ya devices change karne se naya visitor count ho sakta hai. Ad blockers,
+offline visits, bots aur forged public events counts ko affect kar sakte hain.
+IP rate buckets hashed hain aur short lived hain; raw IPs DB mein save nahi hotay.
+Cart count = period mein add-to-cart karne walay visitors; current cart contents
+ya real-time online users nahi. Delivery-details metric successful saved order
+submission par count hota hai; typing ke dauran personal information nahi bheji jati.
+Orders = saved requests, final payment/dispatch confirmation nahi.
+Dashboard last 365 days tak load karta hai. Purana untracked traffic recover nahi hota.
+Orders and analytics database mein rehte hain; Cloudflare D1 dashboard se regular
+export/backups aur apni retention/privacy policy manage karein.
+Do not commit exports, passwords, customer data or .dev.vars to GitHub.
+
+TESTING
+JS syntax and automated backend / checkout integration checks were run.
+Real Cloudflare deployment, real email delivery and browser layout are NOT verified.
+
+Cloudflare official setup:
+https://developers.cloudflare.com/d1/get-started/
+https://developers.cloudflare.com/d1/wrangler-commands/
