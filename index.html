@@ -1,0 +1,941 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Explore XOFFEE.CO instant coffee, iced coffee and vanilla syrup.">
+
+  <title>XOFFEE.CO | Coffee for Every Moment</title>
+
+  <style>
+
+    :root {
+
+      --cream: #fffaf4;
+
+      --brown: #352015;
+
+      --brown-light: #80502f;
+
+      --caramel: #a65d35;
+
+    }
+
+    * {
+
+      box-sizing: border-box;
+
+    }
+
+    html {
+
+      scroll-behavior: smooth;
+
+    }
+
+    body {
+
+      margin: 0;
+
+      color: var(--brown);
+
+      font-family: Arial, sans-serif;
+
+    }
+
+    a {
+
+      text-decoration: none;
+
+    }
+
+    img {
+
+      display: block;
+
+      max-width: 100%;
+
+    }
+
+    /* Navigation */
+
+    .coffee-nav {
+
+      position: relative;
+
+      z-index: 10;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      min-height: 78px;
+
+      padding: 14px 6%;
+
+      background: var(--cream);
+
+      box-shadow: 0 2px 16px rgba(59, 36, 21, 0.08);
+
+    }
+
+    .coffee-logo {
+
+      color: var(--brown);
+
+      font-size: 29px;
+
+      font-weight: 800;
+
+      letter-spacing: -1.5px;
+
+      white-space: nowrap;
+
+    }
+
+    .coffee-logo span,
+
+    .footer-logo span {
+
+      color: var(--caramel);
+
+    }
+
+    .nav-links {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 32px;
+
+    }
+
+    .nav-links a {
+
+      color: #473429;
+
+      font-size: 15px;
+
+      font-weight: 600;
+
+    }
+
+    .nav-links a:hover {
+
+      color: var(--caramel);
+
+    }
+
+    .nav-links .shop-button {
+
+      padding: 12px 22px;
+
+      border-radius: 30px;
+
+      background: #603c2b;
+
+      color: #fff;
+
+    }
+
+    .nav-links .shop-button:hover {
+
+      background: var(--caramel);
+
+      color: #fff;
+
+    }
+
+    .menu-toggle {
+
+      display: none;
+
+      padding: 8px;
+
+      border: 0;
+
+      background: transparent;
+
+      cursor: pointer;
+
+    }
+
+    .menu-toggle span {
+
+      display: block;
+
+      width: 25px;
+
+      height: 2px;
+
+      margin: 5px 0;
+
+      background: var(--brown);
+
+    }
+
+    /* Hero banner */
+
+    .coffee-hero img {
+
+      width: 100%;
+
+      height: auto;
+
+    }
+
+    /* About */
+
+    .coffee-about {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      align-items: center;
+
+      gap: clamp(30px, 6vw, 100px);
+
+      padding: 90px 8%;
+
+      background: var(--cream);
+
+    }
+
+    .about-image {
+
+      overflow: hidden;
+
+      border-radius: 28px;
+
+      background: #f0ddc8;
+
+    }
+
+    .about-image img {
+
+      width: 100%;
+
+      aspect-ratio: 1;
+
+      object-fit: cover;
+
+    }
+
+    .about-label {
+
+      color: var(--caramel);
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      letter-spacing: 3px;
+
+    }
+
+    .about-content h2 {
+
+      max-width: 600px;
+
+      margin: 18px 0;
+
+      font-size: clamp(36px, 4vw, 62px);
+
+      line-height: 1.1;
+
+    }
+
+    .about-content p {
+
+      max-width: 540px;
+
+      color: #6b5548;
+
+      font-size: 17px;
+
+      line-height: 1.8;
+
+    }
+
+    .about-button {
+
+      display: inline-block;
+
+      margin-top: 20px;
+
+      padding: 15px 27px;
+
+      border-radius: 40px;
+
+      background: #814625;
+
+      color: #fff;
+
+      font-weight: 600;
+
+    }
+
+    .about-button:hover {
+
+      background: #5e301b;
+
+    }
+
+    /* Products */
+
+    .coffee-products {
+
+      padding: 70px 3%;
+
+      background: #fff;
+
+    }
+
+    .coffee-products h2 {
+
+      margin: 0 0 38px;
+
+      color: #333;
+
+      font-size: 30px;
+
+    }
+
+    .coffee-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+
+      gap: 14px;
+
+    }
+
+    .coffee-item {
+
+      min-width: 0;
+
+    }
+
+    .coffee-item img {
+
+      width: 100%;
+
+      aspect-ratio: 4 / 5;
+
+      object-fit: cover;
+
+      border-radius: 40px;
+
+      background: #d5a77f;
+
+    }
+
+    .coffee-item h3 {
+
+      margin: 16px 0 0;
+
+      color: var(--brown-light);
+
+      font-size: 21px;
+
+      font-weight: 400;
+
+      line-height: 1.45;
+
+    }
+
+    /* Footer */
+
+    .eboo-footer {
+
+      background: var(--brown);
+
+      color: #f9eee2;
+
+    }
+
+    .footer-inner {
+
+      display: grid;
+
+      grid-template-columns: 1.2fr 0.7fr 1fr;
+
+      gap: 55px;
+
+      max-width: 1300px;
+
+      margin: auto;
+
+      padding: 65px 5%;
+
+    }
+
+    .footer-logo {
+
+      color: #fff7ee;
+
+      font-size: 36px;
+
+      font-weight: 800;
+
+      letter-spacing: -2px;
+
+    }
+
+    .eboo-footer h2 {
+
+      margin: 5px 0 20px;
+
+      color: #fff7ee;
+
+      font-size: 18px;
+
+    }
+
+    .eboo-footer p {
+
+      max-width: 340px;
+
+      color: #ddc8b8;
+
+      font-size: 15px;
+
+      line-height: 1.7;
+
+    }
+
+    .footer-links a {
+
+      display: block;
+
+      width: fit-content;
+
+      margin-bottom: 14px;
+
+      color: #ddc8b8;
+
+    }
+
+    .footer-links a:hover {
+
+      color: #fff;
+
+    }
+
+    .footer-cta {
+
+      display: inline-block;
+
+      margin-top: 12px;
+
+      padding: 13px 22px;
+
+      border-radius: 30px;
+
+      background: #d7905a;
+
+      color: #2f1a10;
+
+      font-weight: 700;
+
+    }
+
+    .footer-cta:hover {
+
+      background: #edaa78;
+
+    }
+
+    .footer-bottom {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      max-width: 1300px;
+
+      margin: auto;
+
+      padding: 22px 5%;
+
+      border-top: 1px solid #79533e;
+
+      color: #cdb3a1;
+
+      font-size: 13px;
+
+    }
+
+    .footer-bottom a {
+
+      color: #cdb3a1;
+
+    }
+
+    @media (max-width: 800px) {
+
+      .coffee-about {
+
+        grid-template-columns: 1fr;
+
+        padding: 55px 6%;
+
+      }
+
+      .coffee-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      }
+
+      .coffee-item img {
+
+        border-radius: 25px;
+
+      }
+
+      .footer-inner {
+
+        grid-template-columns: 1fr 1fr;
+
+      }
+
+    }
+
+    @media (max-width: 768px) {
+
+      .menu-toggle {
+
+        display: block;
+
+      }
+
+      .nav-links {
+
+        display: none;
+
+        position: absolute;
+
+        top: 100%;
+
+        left: 0;
+
+        right: 0;
+
+        padding: 22px 6%;
+
+        background: var(--cream);
+
+        box-shadow: 0 12px 18px rgba(59, 36, 21, 0.12);
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 22px;
+
+      }
+
+      .nav-links.open {
+
+        display: flex;
+
+      }
+
+      .nav-links .shop-button {
+
+        text-align: center;
+
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .coffee-products {
+
+        padding: 50px 5%;
+
+      }
+
+      .coffee-grid {
+
+        gap: 12px;
+
+      }
+
+      .coffee-item img {
+
+        border-radius: 18px;
+
+      }
+
+      .coffee-item h3 {
+
+        font-size: 15px;
+
+      }
+
+      .footer-inner {
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        padding-top: 50px;
+
+        padding-bottom: 50px;
+
+      }
+
+      .footer-bottom {
+
+        flex-direction: column;
+
+      }
+
+    }
+
+  
+.coffee-hero{position:relative;overflow:hidden;aspect-ratio:3 / 1;background:#dfb991;}
+.coffee-hero .banner-slide{position:absolute;inset:0;opacity:0;transition:opacity .45s ease;pointer-events:none;}
+.coffee-hero .banner-slide.active{opacity:1;pointer-events:auto;}
+.coffee-hero .banner-slide img{width:100%;height:100%;object-fit:cover;object-position:center;}
+.banner-copy{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:4% 7%;width:48%;color:#2c160e;background:linear-gradient(90deg,#ffe6ca99,transparent);}
+.banner-copy h2{font-size:clamp(18px,3.6vw,60px);line-height:1.05;letter-spacing:-.035em;margin:0 0 12px;}
+.banner-copy p{font-size:clamp(10px,1.15vw,18px);line-height:1.5;margin:0;max-width:330px;}
+.banner-pause{position:absolute;bottom:8px;right:12px;z-index:2;border:0;border-radius:20px;padding:6px 12px;background:#352015cc;color:white;cursor:pointer;}
+@media(max-width:600px){.banner-copy{width:52%;padding:4% 5%}.banner-copy h2{margin-bottom:5px}.banner-copy p{font-size:10px}.banner-pause{font-size:10px;padding:4px 9px;bottom:4px;right:5px}}
+@media(prefers-reduced-motion:reduce){.coffee-hero .banner-slide{transition:none;}}
+
+.about-image{position:relative;outline-offset:5px;}
+.about-image .about-original{transition:opacity .3s ease;}
+.about-image .about-hover{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#24150d;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+@media(hover:hover){.about-image:hover .about-hover{opacity:1}.about-image:hover .about-original{opacity:0}}
+.about-image:focus-visible{outline:3px solid var(--caramel)}
+.about-image:focus-visible .about-hover{opacity:1}.about-image:focus-visible .about-original{opacity:0}
+@media(prefers-reduced-motion:reduce){.about-image .about-original,.about-image .about-hover{transition:none}}
+
+
+/* Original square dimensions; both pictures fill the same frame. */
+.coffee-about .about-image{aspect-ratio:1 / 1;}
+.coffee-about .about-image .about-original,
+.coffee-about .about-image .about-hover{width:100%;height:100%;aspect-ratio:1 / 1;object-fit:cover;object-position:center;}
+
+/* Welcome strip above the navigation. */
+.welcome-strip{width:100%;padding:11px 16px;background:var(--brown);color:var(--cream);text-align:center}
+.welcome-strip p{margin:0;font-size:14px;font-weight:600;line-height:1.5;letter-spacing:.5px}
+@media(max-width:600px){.welcome-strip{padding:9px 12px}.welcome-strip p{font-size:12px}}
+
+/* Keep navigation visible while the page scrolls. */
+body > header{position:sticky;top:0;z-index:100}
+html{scroll-padding-top:90px}
+
+/* Home product zoom */
+.home-product-photo{overflow:hidden;border-radius:40px;aspect-ratio:4 / 5}
+.coffee-item .home-product-photo img{height:100%;border-radius:0;transform:scale(1);transition:transform .35s ease}
+@media(hover:hover){.coffee-item:hover .home-product-photo img{transform:scale(1.12)}}
+@media(max-width:800px){.home-product-photo{border-radius:25px}}
+@media(max-width:600px){.home-product-photo{border-radius:18px}}
+@media(prefers-reduced-motion:reduce){.coffee-item .home-product-photo img{transition:none}}
+
+/* Video-inspired product stage */
+body{background:#fffaf4}body>header{position:fixed;left:0;right:0;top:0;background:transparent}.welcome-strip{display:none}.coffee-nav{min-height:88px;background:transparent;box-shadow:none;padding:18px 4%}.coffee-logo{font-size:32px}.nav-links{gap:22px}.nav-links a{font-size:12px}.nav-links .shop-button{padding:11px 18px}.coffee-experience{height:260svh;position:relative}.coffee-stage{height:100svh;min-height:580px;position:sticky;top:0;overflow:hidden;background:#fffaf4;isolation:isolate}.coffee-hill{position:absolute;width:92vw;height:92vw;max-width:1400px;max-height:1400px;left:50%;top:38%;border-radius:48% 48% 0 0;background:#854330;transform:translateX(-50%) rotate(-8deg);z-index:-1;will-change:transform}.coffee-hill svg{width:100%;height:100%}.coffee-hill text{fill:#e8b36f;font-family:Georgia,serif;font-size:75px;letter-spacing:6px}.floating-product{position:absolute;top:25%;width:clamp(160px,23vw,350px);will-change:transform,opacity;filter:drop-shadow(0 22px 15px #35201528)}.product-art{display:block;width:100%;height:auto;overflow:visible}.main-product{left:50%;width:clamp(160px,19vw,285px);transform:translateX(-50%);z-index:3}.side-left{left:10%;transform:rotate(-16deg);top:24%}.side-right{right:10%;width:clamp(160px,21vw,310px);transform:rotate(17deg);top:28%}.experience-heading{position:absolute;top:17%;left:4%;right:4%;text-align:center;opacity:0;transform:translateY(65px);will-change:opacity,transform}.experience-eyebrow{font-size:11px;letter-spacing:3px}.experience-heading h1{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(48px,8.8vw,146px);line-height:.92;letter-spacing:-.055em;color:#854330;margin:20px 0}.product-note{position:absolute;top:66%;font-family:Georgia,serif;font-size:clamp(16px,1.8vw,28px);line-height:1.4;opacity:0}.left-note{left:8%}.right-note{right:8%;text-align:right}.experience-shop{position:absolute;left:50%;bottom:16%;transform:translateX(-50%);color:#fffaf4;border:1px solid #fffaf480;border-radius:40px;padding:13px 22px;font-size:12px;white-space:nowrap;z-index:5}.experience-shop span{margin-left:20px}.scroll-cue{position:absolute;bottom:5%;left:50%;transform:translateX(-50%);color:#fffaf4;font-size:9px;letter-spacing:2px;text-align:center;z-index:5}.scroll-cue span{display:block;font-size:22px;margin-top:10px}.motion-control{position:absolute;right:4%;bottom:5%;background:#fffaf4;border:1px solid #85433044;border-radius:30px;color:#854330;padding:9px 13px;cursor:pointer;font-size:10px}.coffee-about{position:relative}.coffee-about .about-content h2{font-family:Georgia,serif;font-weight:400}.coffee-products{background:#fffaf4}.coffee-products h2{font-family:Georgia,serif;font-size:48px;color:#854330}.coffee-nav.scrolled{background:#fffaf4ee;backdrop-filter:blur(12px)}
+@media(max-width:768px){.coffee-nav{min-height:72px}.coffee-logo{font-size:26px}.coffee-stage{min-height:540px}.coffee-hill{width:150vw;height:150vw;top:44%}.coffee-hill text{font-size:62px}.main-product{width:37vw;top:29%}.side-left{width:32vw;left:-7%;top:34%}.side-right{width:33vw;right:-7%;top:34%}.experience-heading{top:20%}.experience-heading h1{font-size:clamp(46px,10vw,80px)}.product-note{top:74%;font-size:15px}.left-note{left:6%}.right-note{right:6%}.experience-shop{bottom:16%}.nav-links{background:#fffaf4}.motion-control{right:3%;bottom:4%;padding:8px}.scroll-cue{left:43%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.coffee-experience{height:110svh}.experience-heading{opacity:1;transform:none}.coffee-hill{top:52%}.floating-product{top:42%}.side-left,.side-right{display:none}.main-product{max-height:44svh}.main-product svg{max-height:44svh}.motion-control{display:none}.experience-shop{bottom:10%}}
+
+
+/* Refined product collection */
+.coffee-products{padding:100px max(5%,calc((100vw - 1440px)/2));background:#f8f3eb;color:#352015}
+.products-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:48px;margin-bottom:44px}.products-eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 22px;font-size:10px;font-weight:700;letter-spacing:2px;color:#865435}.products-eyebrow>span{width:7px;height:7px;border-radius:50%;background:#a3653e}
+.coffee-products .products-intro h2{margin:0;color:#352015;font-size:clamp(44px,5vw,76px);font-family:Georgia,serif;font-weight:400;line-height:1.03;letter-spacing:-2px}.products-intro h2 em{color:#9a623f;font-weight:400}.products-intro-right{max-width:340px;padding-bottom:5px}.products-intro-right p{font-size:14px;color:#826b5a;line-height:1.8;margin:0 0 20px}.products-all{display:inline-flex;align-items:center;gap:30px;padding-bottom:9px;border-bottom:1px solid #b09b87;color:#352015;font-size:12px;font-weight:600}
+.coffee-products .coffee-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}.product-card{min-width:0}.coffee-products .product-picture{display:block;position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#e8ccb0;box-shadow:none;isolation:isolate}.coffee-products .product-picture img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;border-radius:0;transform:scale(1);transition:transform .5s cubic-bezier(.2,.7,.3,1)}.coffee-products .product-picture img[hidden]{display:none}.product-picture:after{background:linear-gradient(180deg,#39220d08,transparent 35%,#39220d14);opacity:1}.coffee-products .product-card:hover .product-picture{box-shadow:0 18px 34px #532d1714}.coffee-products .product-card:hover .product-picture img{transform:scale(1.045)}.product-number{position:absolute;z-index:2;top:18px;left:18px;font-family:Georgia,serif;font-size:14px;color:#4c2b1e}.product-tag{position:absolute;z-index:2;left:14px;bottom:16px;padding:7px 10px;border-radius:20px;background:#fffaf4dd;color:#63432f;font-size:9px;letter-spacing:.2px;backdrop-filter:blur(5px)}.product-picture-arrow{position:absolute;right:14px;bottom:14px;z-index:2;display:grid;place-items:center;width:32px;height:32px;background:#fffaf4;border-radius:50%;color:#583622;font-size:18px;transition:background .2s,color .2s}.product-card:hover .product-picture-arrow{background:#583622;color:#fffaf4}.product-details{padding:22px 2px 0}.product-kicker{font-size:8px;letter-spacing:1.5px;font-weight:700;color:#a07657;margin:0 0 10px}.coffee-products .product-card h3{font-family:Georgia,serif;font-size:27px;font-weight:400;letter-spacing:-.6px;line-height:1.15;color:#352015;margin:0 0 10px}.product-description{font-size:12px;line-height:1.65;color:#8b7463;min-height:40px;margin:0 0 20px}.product-card-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:14px 0;border-top:1px solid #dfd3c6}.product-card-bottom>span{font-size:10px;color:#8a6c55}.product-card-bottom>span:last-child{font-size:11px;font-weight:700;color:#5a3521;display:inline-flex;align-items:center;gap:12px}.products-footnote{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid #ded1c3;margin-top:50px;padding-top:22px}.products-footnote>span{font-size:9px;letter-spacing:1.5px;color:#a07f65}.products-footnote p{margin:0;font-family:Georgia,serif;font-size:17px;color:#80634d}.products-footnote a{font-size:10px;color:#66422b}.products-footnote a span{margin-left:12px}.syrup-fallback{position:absolute;inset:0;background:radial-gradient(ellipse at 40% 20%,#f4dfbc,#d4a77a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;text-align:center;color:#603c26}.syrup-fallback>span{font-size:22px;font-weight:800;letter-spacing:-1px}.syrup-fallback strong{font-family:Georgia,serif;font-size:37px;font-weight:400;line-height:1.05}.syrup-fallback small{font-size:10px;line-height:1.6}.accent{color:#a65d35}
+.product-picture:focus-visible,.products-all:focus-visible,.product-card-bottom a:focus-visible{outline:3px solid #a3653e;outline-offset:5px}
+@media(max-width:1050px){.coffee-products .coffee-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 24px}.coffee-products{padding:72px 6%}.product-description{min-height:0}.product-kicker{font-size:9px}.products-footnote p{display:none}}
+@media(max-width:600px){.coffee-products{padding:56px 5%}.products-intro{display:block;margin-bottom:30px}.products-intro-right{max-width:none;margin-top:22px}.products-intro-right p{font-size:13px;max-width:330px;margin-bottom:15px}.coffee-products .coffee-grid{gap:28px 14px}.coffee-products .product-picture{border-radius:12px}.coffee-products .product-card h3{font-size:22px}.product-details{padding-top:17px}.product-kicker{font-size:7px;letter-spacing:.7px}.product-description{font-size:11px;min-height:37px;margin-bottom:13px}.product-card-bottom{align-items:flex-start;flex-direction:column;gap:10px;padding-top:12px}.product-tag{font-size:7px;padding:6px 8px;left:8px;bottom:10px}.product-picture-arrow{width:24px;height:24px;right:8px;bottom:8px;font-size:14px}.product-number{left:12px;top:12px;font-size:12px}.products-footnote{margin-top:30px;align-items:flex-start;flex-direction:column;gap:12px}.syrup-fallback{gap:18px}.syrup-fallback strong{font-size:27px}.syrup-fallback>span{font-size:17px}.syrup-fallback small{font-size:8px}.products-eyebrow{font-size:8px;letter-spacing:1.5px}}
+@media(prefers-reduced-motion:reduce){.coffee-products .product-picture img{transition:none}.coffee-products .product-card:hover .product-picture img{transform:none}}
+
+/* Reliable navigation, product links and compact screens. */
+.product-card{scroll-margin-top:105px}
+.product-card:target .product-picture{outline:3px solid var(--caramel);outline-offset:4px}
+.product-card h3 a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--caramel);outline-offset:4px}
+.product-picture::after{content:"";position:absolute;inset:0;pointer-events:none}
+.experience-shop{background:#603c2b}
+@media(max-height:580px){.coffee-stage{min-height:100svh}.experience-heading{top:20%}.experience-heading h1{font-size:clamp(30px,7vw,64px)}.floating-product{max-width:22vh}.product-note{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.coffee-experience{height:auto}.coffee-stage{height:100svh;min-height:540px}.experience-shop{color:#fffaf4}}
+
+/* Supplied product photos in the animated hero. */
+.floating-product img.product-art{width:100%;height:49svh;display:block;border-radius:0;object-fit:contain;}
+@media(prefers-reduced-motion:reduce){.main-product img.product-art{max-height:44svh;object-fit:contain;}}
+
+/* Larger isolated products in the animated hero. */
+.floating-product img.product-art{height:66svh;max-height:none;width:100%;object-fit:contain;}
+.main-product{width:clamp(260px,34vw,510px);top:18%;}
+.side-left{width:clamp(260px,35vw,520px);left:4%;top:18%;}
+.side-right{width:clamp(260px,35vw,520px);right:4%;top:18%;}
+@media(max-width:768px){.main-product{width:62vw;top:23%;}.side-left,.side-right{width:58vw;top:25%;}.side-left{left:-20%;}.side-right{right:-20%;}.floating-product img.product-art{height:58svh;}}
+@media(prefers-reduced-motion:reduce){.main-product{top:42%;}.main-product img.product-art{height:49svh;max-height:49svh;}}
+
+/* Supplied decorative vine behind the animated coffee stage. */
+.coffee-stage::before,.coffee-stage::after{
+  content:"";position:absolute;top:0;bottom:0;width:clamp(130px,24vw,360px);
+  background-image:url("images/image-01.webp");background-repeat:no-repeat;
+  background-size:contain;background-position:left center;
+  opacity:.28;mix-blend-mode:multiply;pointer-events:none;z-index:-2;
+}
+.coffee-stage::before{left:-3%;}
+.coffee-stage::after{right:-3%;transform:scaleX(-1);}
+@media(max-width:768px){
+  .coffee-stage::before,.coffee-stage::after{width:32vw;opacity:.22;}
+}
+
+
+.coffee-logo,.footer-logo{display:block;width:230px;max-width:55vw;line-height:0}.brand-logo{display:block;width:100%;height:auto;border-radius:0;background:transparent}.footer-logo{width:270px}.coffee-logo .brand-logo{max-height:64px}@media(max-width:600px){.coffee-logo{width:185px}}
+</style>
+
+
+<style>
+.whatsapp-contact{position:fixed;right:24px;bottom:24px;bottom:calc(24px + env(safe-area-inset-bottom, 0px));z-index:10000;display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;box-shadow:0 6px 22px rgba(0,0,0,.25);transition:transform .2s,background .2s;}
+.whatsapp-contact:hover{background:#128c7e;transform:translateY(-3px);}
+.whatsapp-contact:focus-visible{outline:3px solid #352015;outline-offset:4px;}
+.whatsapp-contact svg{width:34px;height:34px;fill:currentColor;}
+@media(max-width:600px){.whatsapp-contact{right:18px;width:56px;height:56px;}}
+@media(prefers-reduced-motion:reduce){.whatsapp-contact{transition:none;}}
+</style>
+</head>
+
+<body id="home">
+  <div class="welcome-strip"><p>Welcome to XOFFEE.CO</p></div>
+
+  <header>
+
+    <nav class="coffee-nav" aria-label="Main navigation">
+
+      <a href="#home" class="coffee-logo"><img class="brand-logo" src="images/image-02.webp" alt="XOFFEE.CO" width="2048" height="682" decoding="async"></a>
+
+      <button
+
+        class="menu-toggle"
+
+        type="button"
+
+        aria-label="Open menu"
+
+        aria-controls="coffee-menu"
+
+        aria-expanded="false"
+
+      >
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+      </button>
+
+  <div class="nav-links" id="coffee-menu">
+
+        <a href="#home">Home</a>
+
+        <a href="coffee-products-fixed (4).html">Shop Coffee</a>
+
+        <a href="our-story.html">Our Story</a>
+
+        <a href="coffeeboocontact.html">Contact</a>
+
+        <a href="coffee-products-fixed (4).html" class="shop-button">Shop Now →</a>
+
+      </div>
+
+    </nav>
+
+  </header>
+  
+
+  <main>
+
+    <section class="coffee-experience" aria-label="Discover XOFFEE.CO products"><div class="coffee-stage"><div class="coffee-hill"><svg viewBox="0 0 1000 700" aria-hidden="true"><defs><path id="coffee-curve" d="M135 650 A365 365 0 0 1 865 650"/></defs><text><textPath href="#coffee-curve" startOffset="50%" text-anchor="middle">BREW • SIP • ENJOY • REPEAT</textPath></text></svg></div><div class="experience-heading"><p class="experience-eyebrow">COFFEE FOR EVERY MOMENT</p><h1>YOUR DAILY<br>COFFEE MOMENT.</h1></div><div class="floating-product side-left"><img class="product-art" src="images/image-03.webp" alt="XOFFEE.CO compact coffee jar, 100 g" decoding="async" fetchpriority="high" width="1254" height="1254"></div><div class="floating-product main-product"><img class="product-art" src="images/image-04.webp" alt="XOFFEE.CO tall coffee jar" decoding="async" fetchpriority="high" width="1254" height="1254"></div><div class="floating-product side-right"><img class="product-art" src="images/image-05.webp" alt="XOFFEE.CO vanilla syrup bottle" decoding="async" fetchpriority="high" width="1254" height="1254"></div><div class="product-note left-note">Rich aroma.<br>Little daily rituals.</div><div class="product-note right-note">Warm or iced.<br>Always your way.</div><a class="experience-shop" href="coffee-products-fixed%20(4).html">Discover our coffee <span>↗</span></a><a class="scroll-cue" href="#about">SCROLL TO DISCOVER <span>↓</span></a><button class="motion-control" type="button" aria-pressed="false">Pause motion</button></div></section>
+
+    <section class="coffee-about" id="about">
+
+      <div class="about-image" tabindex="0" aria-label="Coffee bottle preview">
+
+        <img class="about-original"
+
+          src="images/image-06.webp"
+
+          alt="XOFFEE.CO instant coffee jar"
+
+          loading="lazy"
+
+         decoding="async" width="1254" height="1254">
+
+      <img class="about-hover" src="images/image-07.webp" alt="XOFFEE.CO bottle with coffee beans and coffee splash" aria-hidden="true" decoding="async" loading="lazy" width="1254" height="1254"></div>
+      <div class="about-content">
+
+        <span class="about-label">ABOUT XOFFEE.CO</span>
+
+        <h2>Good coffee, made for your everyday moments.</h2>
+
+        <p>
+
+          At XOFFEE.CO, we believe a great cup of coffee can make any moment
+
+          feel special. Whether you like it warm and comforting or chilled
+
+          and refreshing, we're here to make your coffee break one to enjoy.
+
+        </p>
+
+        <a href="coffee-products-fixed (4).html" class="about-button">Explore Our Coffee →</a>
+
+      </div>
+
+    </section>
+
+    <section class="coffee-products" id="shop" aria-labelledby="products-title"><div class="products-intro"><div><p class="products-eyebrow"><span></span> THE XOFFEE.CO COLLECTION</p><h2 id="products-title">Find your<br><em>coffee moment.</em></h2></div><div class="products-intro-right"><p>From your first warm sip to a refreshing iced break. Pick a little something for your everyday ritual.</p><a class="products-all" href="coffee-products-fixed%20(4).html">Explore the collection <span aria-hidden="true">↗</span></a></div></div><div class="coffee-grid"><article class="coffee-item product-card" id="instant-coffee-100g"><span class="product-picture home-product-photo" aria-label="Explore Instant Coffee, 100 g · Compact jar"><span class="product-number">01</span><img src="images/image-06.webp" alt="XOFFEE.CO Instant Coffee" loading="lazy" decoding="async" width="1254" height="1254"><span class="product-tag">Warm & comforting</span><span class="product-picture-arrow" aria-hidden="true">↗</span></span><div class="product-details"><p class="product-kicker">THE EVERYDAY CLASSIC</p><h3><span>Instant Coffee</span></h3><p class="product-description">Your little jar of coffee moments.</p><div class="product-card-bottom"><span>100 g · Compact jar</span><span aria-label="View Instant Coffee, 100 g · Compact jar">View product <span aria-hidden="true">↗</span></span></div></div></article><article class="coffee-item product-card" id="iced-coffee"><span class="product-picture home-product-photo" aria-label="Explore Iced Coffee, Ready to sip"><span class="product-number">02</span><img src="images/image-08.webp" alt="Open plastic iced coffee glass with XOFFEE.CO printed directly on the glass" loading="lazy" decoding="async" width="1254" height="1254"><span class="product-tag">Cool & refreshing</span><span class="product-picture-arrow" aria-hidden="true">↗</span></span><div class="product-details"><p class="product-kicker">A COOL LITTLE MOMENT</p><h3><span>Iced Coffee</span></h3><p class="product-description">Plastic glass only.</p><div class="product-card-bottom"><span>Ready to sip</span><span aria-label="View Iced Coffee, Ready to sip">View product <span aria-hidden="true">↗</span></span></div></div></article><article class="coffee-item product-card" id="instant-coffee-50g"><span class="product-picture home-product-photo" aria-label="Explore Instant Coffee, 50 g · Tall jar"><span class="product-number">03</span><img src="images/image-09.webp" alt="XOFFEE.CO Instant Coffee" loading="lazy" decoding="async" width="1254" height="1254"><span class="product-tag">Pour, stir & enjoy</span><span class="product-picture-arrow" aria-hidden="true">↗</span></span><div class="product-details"><p class="product-kicker">YOUR DAILY RITUAL</p><h3><span>Instant Coffee</span></h3><p class="product-description">Rich coffee for your everyday cup.</p><div class="product-card-bottom"><span>50 g · Tall jar</span><span aria-label="View Instant Coffee, 50 g · Tall jar">View product <span aria-hidden="true">↗</span></span></div></div></article><article class="coffee-item product-card" id="vanilla-syrup"><span class="product-picture home-product-photo" aria-label="Explore Vanilla Syrup, Coffee companion"><span class="product-number">04</span><img src="images/image-10.webp" alt="XOFFEE.CO Vanilla Syrup" loading="lazy" decoding="async" width="1254" height="1254"><span class="product-tag">A touch of vanilla</span><span class="product-picture-arrow" aria-hidden="true">↗</span></span><div class="product-details"><p class="product-kicker">THE FINISHING TOUCH</p><h3><span>Vanilla Syrup</span></h3><p class="product-description">A little vanilla for your favourite coffee.</p><div class="product-card-bottom"><span>Coffee companion</span><span aria-label="View Vanilla Syrup, Coffee companion">View product <span aria-hidden="true">↗</span></span></div></div></article></div><div class="products-footnote"><span>WARM. ICED. YOUR WAY.</span><p>Good coffee. Little moments. Every day.</p><a href="our-story.html">Get to know XOFFEE.CO <span aria-hidden="true">↗</span></a></div></section>
+
+  </main>
+
+  <footer class="eboo-footer" id="contact">
+
+    <div class="footer-inner">
+
+      <div>
+
+        <a href="#home" class="footer-logo"><img class="brand-logo" src="images/image-02.webp" alt="XOFFEE.CO" width="2048" height="682" decoding="async" loading="lazy"></a>
+
+        <p>Coffee for every moment.</p>
+
+      </div>
+
+      <div class="footer-links">
+
+        <h2>Explore</h2>
+
+        <a href="#home">Home</a>
+
+        <a href="coffee-products-fixed (4).html">Shop Coffee</a>
+
+        <a href="our-story.html">our story</a>
+
+      </div>
+
+      <div>
+
+        <h2>Enjoy your coffee moment</h2>
+
+        <p>
+
+          Discover XOFFEE.CO instant coffee, iced coffee and vanilla syrup.
+
+        </p>
+
+        <a href="coffee-products-fixed (4).html" class="footer-cta">Explore Products →</a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <span>© 2026 XOFFEE.CO. All rights reserved.</span>
+
+      <a href="#home">Back to top ↑</a>
+
+    </div>
+
+  </footer>
+
+  <script>
+    function closeMenu() {
+      menu.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Open menu');
+    }
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && menu.classList.contains('open')) {
+        closeMenu(); menuButton.focus();
+      }
+    });
+    document.addEventListener('click', event => {
+      if (!event.target.closest('.coffee-nav')) closeMenu();
+    });
+    addEventListener('resize', () => { if (innerWidth > 768) closeMenu(); });
+
+
+    const menuButton = document.querySelector(".menu-toggle");
+
+    const menu = document.querySelector("#coffee-menu");
+
+    menuButton.addEventListener("click", () => {
+
+      const isOpen = menu.classList.toggle("open");
+
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+
+      menuButton.setAttribute(
+
+        "aria-label",
+
+        isOpen ? "Close menu" : "Open menu"
+
+      );
+
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+
+      link.addEventListener("click", () => {
+
+        menu.classList.remove("open");
+
+        menuButton.setAttribute("aria-expanded", "false");
+
+        menuButton.setAttribute("aria-label", "Open menu");
+
+      });
+
+    });
+
+
+(()=>{
+ const section=document.querySelector('.coffee-experience'), main=document.querySelector('.main-product'),left=document.querySelector('.side-left'),right=document.querySelector('.side-right'),hill=document.querySelector('.coffee-hill'),heading=document.querySelector('.experience-heading'),notes=document.querySelectorAll('.product-note'),nav=document.querySelector('.coffee-nav'),shop=document.querySelector('.experience-shop'),cue=document.querySelector('.scroll-cue'),button=document.querySelector('.motion-control');
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');let paused=false,frame=0;
+ const clamp=n=>Math.max(0,Math.min(1,n));
+ function render(){frame=0;nav.classList.toggle('scrolled',scrollY>80);if(reduced.matches){[main,left,right,hill,heading,shop,cue,...notes].forEach(el=>{el.style.transform='';el.style.opacity='';el.style.visibility='';el.style.color='';});return;}const p=clamp(-section.getBoundingClientRect().top/(section.offsetHeight-innerHeight)),focus=clamp((p-.14)/.42),exit=clamp((p-.77)/.23),mobile=innerWidth<769;const float=paused?0:Math.sin(performance.now()/1100)*7;
+ main.style.transform=`translateX(-50%) translateY(${focus*innerHeight*.19-exit*innerHeight*.85+float}px) rotate(${(1-focus)*-4}deg) scale(${1+focus*.18})`;
+ left.style.transform=`translate(${-focus*innerWidth*.4}px,${-focus*innerHeight*.3-float}px) rotate(${-16-focus*28}deg)`;
+ right.style.transform=`translate(${focus*innerWidth*.4}px,${-focus*innerHeight*.3+float}px) rotate(${17+focus*28}deg)`;
+ left.style.opacity=right.style.opacity=1-focus;hill.style.transform=`translateX(-50%) translateY(${focus*innerHeight*.76+exit*innerHeight*.5}px) rotate(${-8+p*14}deg)`;
+ heading.style.opacity=focus*(1-exit);heading.style.transform=`translateY(${(1-focus)*65-exit*100}px)`;notes.forEach(n=>n.style.opacity=focus*(1-exit));shop.style.opacity=1-focus;shop.style.visibility=focus>.95?'hidden':'visible';cue.style.color=focus>.5?'#854330':'#fffaf4';if(!paused&&!document.hidden&&p<1&&section.getBoundingClientRect().bottom>0)frame=requestAnimationFrame(render);
+ }
+ const queue=()=>{if(!frame)frame=requestAnimationFrame(render)};addEventListener('scroll',queue,{passive:true});addEventListener('resize',queue);document.addEventListener('visibilitychange',queue);reduced.addEventListener('change',queue);
+ button.addEventListener('click',()=>{paused=!paused;button.textContent=paused?'Resume motion':'Pause motion';button.setAttribute('aria-pressed',String(paused));queue()});queue();
+})();
+
+</script>
+
+
+<a class="whatsapp-contact" href="https://wa.me/923197393158" target="_blank" rel="noopener noreferrer" aria-label="Chat with XOFFEE.CO on WhatsApp: 03197393158" title="Chat on WhatsApp">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.91 11.91 0 0012.04 0C5.42 0 .03 5.38.03 12c0 2.12.55 4.18 1.6 6L0 24l6.15-1.61A12.02 12.02 0 0012.04 24C18.66 24 24 18.62 24 12c0-3.21-1.23-6.22-3.48-8.52zM12.04 22a9.97 9.97 0 01-5.08-1.39l-.36-.21-3.65.96.97-3.56-.24-.37A9.93 9.93 0 012.03 12C2.03 6.49 6.52 2 12.04 2A9.89 9.89 0 0122 12c0 5.51-4.45 10-9.96 10zm5.48-7.49c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.55.72.31 1.28.5 1.72.64.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
+</a>
+</body>
+
+</html>
